@@ -1,0 +1,134 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+.inner {
+  position: relative;
+  width: var(--cw);
+  max-width: var(--cmax);
+  margin: 0 auto;
+  padding: 110px 0 96px;
+  display: grid;
+  gap: clamp(22px, 5vh, 56px);
+}
+.hello {
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.nameBox {
+  position: relative;
+  justify-self: start;
+  padding: clamp(10px, 1.4vw, 24px) clamp(14px, 2vw, 34px);
+}
+.name {
+  font-size: clamp(3.6rem, min(18.5vw, 31vh), 19rem);
+  line-height: 0.84;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+}
+.word {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.06em 0.04em 0.1em;
+  margin: -0.06em -0.04em -0.1em;
+}
+.char {
+  display: inline-block;
+  will-change: transform;
+}
+.grad .char {
+  background: linear-gradient(100deg, var(--accent) 5%, var(--pink) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .name {
+    font-size: clamp(4.6rem, min(21vw, 31vh), 19rem);
+  }
+}
+.role {
+  margin-top: clamp(14px, 3vh, 28px);
+}
+.roleLead {
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.swap {
+  display: block;
+  height: 1.15em;
+  overflow: hidden;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #c481ff;
+}
+.swapCol {
+  display: block;
+  animation: swap 6s var(--ease-io) infinite;
+}
+.swapCol > span {
+  display: block;
+  height: 1.15em;
+}
+@keyframes swap {
+  0%, 40% { transform: translateY(0); }
+  50%, 90% { transform: translateY(-33.3333%); }
+  100% { transform: translateY(-66.6666%); }
+}
+
+.cue {
+  position: absolute;
+  left: 0;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.cueLine {
+  position: relative;
+  width: 1px;
+  height: 52px;
+  background: var(--line);
+  overflow: hidden;
+}
+.cueLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: top;
+  animation: cue 2.2s var(--ease-io) infinite;
+}
+@keyframes cue {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (min-width: 1025px) {
+  /* sits in the empty space beside "DEB" */
+  .role {
+    position: absolute;
+    top: clamp(18px, 6%, 64px);
+    right: clamp(14px, 3vw, 64px);
+    margin: 0;
+  }
+}

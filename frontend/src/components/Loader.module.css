@@ -1,0 +1,196 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #eae5ec;
+  color: var(--bg);
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: var(--cw);
+  max-width: var(--cmax);
+  padding: 20px 0;
+}
+.logo {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+/* little bouncing-ball game, ported from v2 */
+.game {
+  position: relative;
+  width: 80px;
+  height: 40px;
+}
+.gameBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+  transform: scale(0.4);
+  transform-origin: top right;
+}
+.gameIn {
+  position: absolute;
+  left: 0;
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  animation: slide 7s linear infinite;
+}
+@keyframes slide {
+  to {
+    transform: translateX(-300px);
+  }
+}
+.line {
+  flex: none;
+  position: relative;
+  width: 10px;
+  height: 60px;
+  margin: 0 20px 40px;
+  background: #000;
+}
+.line:nth-child(2n) {
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+.ball {
+  position: absolute;
+  left: 20%;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  transform: translateY(10px);
+  animation: bounce 7s infinite cubic-bezier(0.3, 1.18, 0.63, 1.28);
+}
+@keyframes bounce {
+  0% { transform: translateY(70px); }
+  15% { transform: translateY(10px); }
+  30% { transform: translateY(70px); }
+  45% { transform: translateY(10px); }
+  67% { transform: translateY(70px); }
+  80% { transform: translateY(10px); }
+  90%, 100% { transform: translateY(70px); }
+}
+
+.marquee {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(34px, 8vw, 60px);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.track {
+  display: inline-flex;
+  animation: marquee 8s linear infinite;
+}
+.track span {
+  position: relative;
+  display: inline-block;
+  padding: 0 50px;
+}
+.track span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  transform: translate(-50%, -50%);
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pill {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  min-width: 210px;
+  padding: 20px 46px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  overflow: hidden;
+}
+.pill[data-ready="true"] {
+  cursor: pointer;
+}
+.pillBg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: #000;
+  overflow: hidden;
+}
+.pillGlow {
+  position: absolute;
+  top: var(--my, 50%);
+  left: var(--mx, 50%);
+  width: 220px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  filter: blur(30px);
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+.labels {
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+.labels > span {
+  grid-area: 1 / 1;
+  transition: opacity 0.4s ease, transform 0.5s var(--ease-out);
+  white-space: nowrap;
+}
+.welcome {
+  opacity: 0;
+  transform: translateY(60%);
+}
+.pill[data-ready="true"] .loading {
+  opacity: 0;
+  transform: translateY(-60%);
+}
+.pill[data-ready="true"] .welcome {
+  opacity: 1;
+  transform: none;
+}
+.pct {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+  margin-left: 6px;
+}

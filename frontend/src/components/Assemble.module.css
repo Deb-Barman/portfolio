@@ -1,0 +1,93 @@
+/* The root is never transformed (it's the ScrollTrigger anchor);
+   the mover is what gets "dragged" into place. */
+.root {
+  position: relative;
+}
+.mover {
+  position: relative;
+  height: 100%;
+}
+.content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+}
+
+.frame {
+  position: absolute;
+  inset: -1px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px dashed rgba(194, 164, 255, 0.62);
+  border-radius: var(--radius, 0);
+  box-shadow: 0 0 28px rgba(194, 164, 255, 0.1);
+}
+.handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--bg);
+  border: 1px solid var(--accent);
+}
+.tl {
+  top: -5px;
+  left: -5px;
+}
+.tr {
+  top: -5px;
+  right: -5px;
+}
+.bl {
+  bottom: -5px;
+  left: -5px;
+}
+.br {
+  bottom: -5px;
+  right: -5px;
+}
+.dim {
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  transform: translateX(-50%);
+  padding: 1px 7px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--bg);
+  font: 600 10px/1.6 var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+.cursor svg {
+  flex: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+}
+.flip .tag {
+  position: absolute;
+  right: 100%;
+  margin: 12px 4px 0 0;
+}
+.tag {
+  margin: 12px 0 0 -2px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: var(--c);
+  color: #0b080c;
+  font: 600 10px/1.7 var(--font-geist-sans), system-ui, sans-serif;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
