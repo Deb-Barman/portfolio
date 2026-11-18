@@ -1,0 +1,81 @@
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 49;
+  width: var(--cw);
+  max-width: var(--cmax);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 18px;
+  pointer-events: none;
+  opacity: 0;
+}
+/* soft backdrop so text never collides with the icons */
+.dock::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -50vw;
+  right: -50vw;
+  bottom: 0;
+  height: 96px;
+  background: linear-gradient(rgba(11, 8, 12, 0), rgba(11, 8, 12, 0.92) 70%);
+}
+.icons {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: var(--text);
+  background: rgba(20, 17, 23, 0.7);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  transition: color 0.3s, border-color 0.3s, transform 0.4s var(--ease-out), background 0.3s;
+}
+.icon svg {
+  width: 18px;
+  height: 18px;
+}
+.icon:hover,
+.icon:focus-visible {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.resume {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(20, 17, 23, 0.7);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  transition: color 0.3s, border-color 0.3s, background 0.3s;
+}
+.resume svg {
+  width: 16px;
+  height: 16px;
+}
+.resume:hover,
+.resume:focus-visible {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
