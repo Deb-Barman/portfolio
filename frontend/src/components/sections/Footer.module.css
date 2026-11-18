@@ -1,0 +1,42 @@
+.footer {
+  width: var(--cw);
+  max-width: var(--cmax);
+  margin: clamp(70px, 12vh, 140px) auto 0;
+  padding: 34px 0 calc(34px + 56px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+.made {
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.made span {
+  color: var(--accent);
+}
+.meta {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.top {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+.top:hover,
+.top:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}

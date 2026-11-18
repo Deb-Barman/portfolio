@@ -1,0 +1,152 @@
+.section {
+  position: relative;
+  padding: clamp(70px, 12vh, 150px) 0;
+}
+.inner {
+  width: var(--cw);
+  max-width: var(--cmax);
+  margin: 0 auto;
+}
+.head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(28px, 6vh, 64px);
+}
+.headTitle {
+  width: fit-content;
+}
+.sub b {
+  color: var(--text);
+  font-weight: 600;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.legendDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.groups {
+  display: block;
+}
+.item {
+  break-inside: avoid;
+  margin-bottom: clamp(22px, 3vw, 36px);
+}
+.group {
+  padding: clamp(18px, 2.4vw, 28px);
+}
+.label {
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 13.5px;
+  line-height: 1.2;
+  transition:
+    transform 0.35s var(--ease-out),
+    border-color 0.35s,
+    color 0.35s,
+    box-shadow 0.35s;
+}
+.chip:hover {
+  transform: translateY(-3px);
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.lvl-legend,
+.lvl-expert,
+.lvl-advanced,
+.lvl-beginner {
+  /* tier colours resolved through --c / --bgc / --fg */
+}
+.lvl-legend {
+  --c: #ffb800;
+  --bgc: rgba(255, 184, 0, 0.04);
+  --bd: rgba(255, 184, 0, 0.25);
+  --fg: #ffe999;
+  --glow: rgba(255, 184, 0, 0.35);
+}
+.lvl-expert {
+  --c: #00ff88;
+  --bgc: rgba(0, 255, 136, 0.03);
+  --bd: rgba(0, 255, 136, 0.2);
+  --fg: #a8ffda;
+  --glow: rgba(0, 255, 136, 0.3);
+}
+.lvl-advanced {
+  --c: #c2a4ff;
+  --bgc: rgba(194, 164, 255, 0.04);
+  --bd: rgba(194, 164, 255, 0.2);
+  --fg: #d8c4ff;
+  --glow: rgba(194, 164, 255, 0.32);
+}
+.lvl-beginner {
+  --c: #445566;
+  --bgc: rgba(255, 255, 255, 0.02);
+  --bd: rgba(255, 255, 255, 0.08);
+  --fg: #8899aa;
+  --glow: rgba(255, 255, 255, 0.14);
+}
+.chip {
+  border-color: var(--bd);
+  background: var(--bgc);
+  color: var(--fg);
+}
+.chip .dot {
+  background: var(--c);
+  box-shadow: 0 0 6px var(--c);
+}
+.lvl-beginner .dot {
+  box-shadow: none;
+}
+.chip:hover {
+  border-color: var(--c);
+  box-shadow: 0 8px 24px var(--glow);
+}
+.on,
+.on:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: var(--c);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px var(--c),
+    0 0 26px var(--glow);
+}
+
+@media (min-width: 1000px) {
+  .groups {
+    columns: 2;
+    column-gap: clamp(26px, 4vw, 44px);
+  }
+}
